@@ -4,7 +4,7 @@
 using namespace std;
 
 // constructor
-CCar::CCar() : m_fuel(0),m_migration(0)
+CCar::CCar() : m_fuel(0), m_migration(0)
 {
     cout << "Generate CCar object" << endl;
 }
@@ -16,19 +16,19 @@ CCar::~CCar()
 
 void CCar::move()
 {
-    // move if it has fuel
-    if (m_fuel >= 0){
+    // move if it has fuels
+    if (m_fuel >> 0){
         m_migration++;
         m_fuel--;
     }
-    cout << "Migration length: " << m_migration << endl;
-    cout << "Amount of fuel: " << m_fuel << endl;
+    cout << "Moving distance:" << m_migration << endl;
+    cout << "fuel" << m_fuel << endl;
 }
-
+// fueling method
 void CCar::supply(int fuel)
 {
-    if (fuel > 0){
+    if(fuel > 0){
         m_fuel += fuel;
     }
-    cout << "Amount of fuel: " << m_fuel << endl;
+    cout << "fuel" << m_fuel << endl;
 }
