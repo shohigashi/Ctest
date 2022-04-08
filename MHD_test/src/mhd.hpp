@@ -14,4 +14,11 @@ constexpr size_t XN = 200, YN = 200;
 constexpr size_t PN = 100;
 // number of variables
 constexpr size_t VN = 9;
-// 
+// domain size
+constexpr double XL = 200.0, YL = 200.0;
+constexpr double TL = 100.0;
+//grid size
+constexpr double dx = XL/XN, dy = YL/YN;
+// CFL number
+constexpr double CFL = 0.4
+
