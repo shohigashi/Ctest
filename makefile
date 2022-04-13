@@ -2,7 +2,7 @@
 CC = icpc
 
 # 2. compiler option
-CFLAGS = -g -Wall -O2
+CFLAGS = -g -Wall -O2 -std=c++17
 
 # 3. execution file name
 TARGET = a.out
