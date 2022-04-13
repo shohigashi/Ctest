@@ -1,10 +1,12 @@
-/*#include <iostream>
+#include <iostream>
 #include <string>
 #include <iterator>
 #include <random>
 #include <algorithm>
-*/
-#include <bits/stdc++.h>
+#include <numbers>
+
+//#include <bits/stdc++.h>
+
 
 std::tuple<int, int, std::string> GetTuple()
 {

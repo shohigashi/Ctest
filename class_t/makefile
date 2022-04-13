@@ -1,35 +1,50 @@
 # 1. compiler
-CC = g++
+CC = icpc
 
 # 2. compiler option
-CFLAGS =
+CFLAGS = -g -Wall -O2 -std=c++20
 
 # 3. execution file name
 TARGET = a.out
 
-# 4. source code list for compile
-SRCS = ./*.cpp
+# 4. object directly for output
+OBJDIR = ./obj
 
-# 5. object fiel name
-OBJS = $(SRCS:.cpp=.o)
+# 5. source code list for compile
+SRCS = $(wildcard *.cpp)
 
-# 6. include path
+# 6. object fiel name
+OBJS = $(addprefix $(OBJDIR)/,  $(SRCS:.cpp=.o))
+
+# 7. include path
 INCDIR = 
 
-# 7. library path
+# 8. library path
+LIBDIR = 
 
-# 8. libraries
+# 9. libraries
 LIBS = 
 
-# 9. generate target file
+# 10. generate target file
 $(TARGET): $(OBJS)
+#	@if [ ! -d $(OBJDIR) ]; \
+			then echo "mkdir -p $(OBJDIR)"; mkdir -p $(OBJDIR) ;\
+	fi
 	$(CC) -o $@ $^ $(LIBDIR) $(LIBS)
 
-# 10. generate object file
-$(OBJS): $(SRCS)
-	$(CC) $(CFLAGS) $(INCDIR) -c $(SRCS)
+# 11. generate object file
+#$(OBJS): $(SRCS)
+$(OBJDIR)/%.o: %.cpp
+	@if [ ! -d $(OBJDIR) ]; \
+       then echo "mkdir -p $(OBJDIR)"; mkdir -p $(OBJDIR); \
+  fi
+	$(CC) $(CFLAGS) $(INCDIR) $(LIBS) -o $@ -c $<
 
-all: clean $(OBJS) $(TARGET)
+#		@[ -d $(OBJDIR) ]
+#		$(CC) $(CFLAGS) $(INCDIR) -o $@ -c $<
+
+#all: clean $(OBJS) $(TARGET)
+all: clean $(TARGET)
 
 clean:
 	-rm -f $(OBJS) $(TARGET) *.d
